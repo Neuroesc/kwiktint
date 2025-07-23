@@ -178,6 +178,7 @@ function kwiktint(varargin)
         keyboard
 
     elseif length(fnames) == 1
+        combine = 1;
         disp(sprintf('\t...only 1 .set file detected: %s',snames{1}))
         disp(sprintf('\t...will analyse session into .cut files named: %s',config.outname));
         idata(1,1:4) = {fnames{1},config.outname,pwd,pwd};
@@ -373,7 +374,7 @@ function kwiktint(varargin)
                 end 
             end 
 
-            % write the .ini file
+            %% write the .ini file
             % the .ini file holds the klustakwik option for TINT, it isn't necessary as TINT will default to principal components, but we produce it every time just to be sure
             iname = [out_dir '\kwiktint\TINT_input_' name_now '_' num2str(tnow) '.ini'];
             fileID = fopen(iname,'w');
@@ -385,21 +386,21 @@ function kwiktint(varargin)
             fclose(fileID);
             save([out_dir '\kwiktint\' name_now '.kk'],'kkfet','kkset'); % also save a mat file containing the data
 
-            % Prepare inputs for Tint
+            %% Prepare inputs for Tint
             % run_line is the actual command line that will be used with command prompt to run TINT and load the appropriate settings
             % the .text file generated here is just a record of what the run_line states, mainly for debugging
             logname = [out_dir '\kwiktint\TINT_output_' name_now '_' num2str(tnow) '.txt']; 
             run_line = ['"' tint_location '" ' '"' dat_to_load '" ' '"' num2str(tetrodes(tt)) '" ' '"' logname '" ' '"/convertkk2cut" "/runKK" ' '"/KKoptions"' ' "' iname '"'];
             fprintf(fileID1,'%s\n','[run_line]',run_line);
 
-            % Display which channels were not included and save this info
+            %% Display which channels were not included and save this info
             dindx = find(channs == 0);
             if ~isempty(dindx)
                 disp(sprintf('\t\t\t...channel(s) excluded: %s',mat2str(dindx)))
             end 
             save([out_dir '\kwiktint\' name_now '_channel_data.mat'],'dedch','eegch','grdch','-v7.3'); % save channel and eeg data
 
-            % Run klustakwik
+            %% Run klustakwik
             if config.max_tp > 1
                 % get the process ID (pid) for all running Tint processes        
                 disp(sprintf('\t\t\t...queued')) 
@@ -425,16 +426,16 @@ function kwiktint(varargin)
     fclose(fileID1);
     disp(sprintf('\t...done'))
 
-%%%%%%%%%%%%%%%% Final Messages
-    analysis_log({'kwiktint'},1,'version',{'v4.0.1'});
+%%%%%%%%%%%%%%%%  Final Messages
+    analysis_log({'kwiktint'},1,'version',{'v3.2.0'});
     fclose('all');
     toc1 = toc/60;
-    disp(sprintf('Kwiktint has finished. It took %0.3f s (%0.3f mins)',toc,toc1)) % Stop counting time and display results
+    disp(sprintf('Kwiktint has finished. It took %0.3f seconds or %0.3f minutes',toc,toc1)) % Stop counting time and display results
     disp(['Go to ','<a href = "matlab: [s,r] = system(''explorer ',cd,' &'');">','current folder','</a>'])
     disp(['Open ','<a href = "matlab: [s,r] = system(''explorer ',tint_location,' &'');">','TINT','</a>'])
     disp('----------------------------------------------------------------------------');
 
-end
+end % end of kwiktint
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Local subfunction getSNAMES
