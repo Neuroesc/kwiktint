@@ -114,7 +114,7 @@ function kwiktint(varargin)
     kkfet.PC2                           = 1; % use second principal component
     kkfet.PC3                           = 1; % use third principal component
     kkfet.PC4                           = 0; % use fourth principal component
-    kkfet.A                             = 0; % use spike amplitude
+    kkfet.A                             = 1; % use spike amplitude
     kkfet.Vt                            = 0; % use height at time t
     kkfet.P                             = 0; % use height of peak
     kkfet.T                             = 0; % use depth of trough
