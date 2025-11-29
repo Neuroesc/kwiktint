@@ -238,7 +238,9 @@ function kwiktint(varargin)
 %%%%%%%%%%%%%%%% Connect to TINT   
     % messages for the user
     disp(sprintf('Starting analysis...'))
-    disp(sprintf(['\t...analysis starting at: ',datetime("now",'format','yyyy-MM-dd HH:mm:ss')]));  
+    t = datetime('now');
+    s = string(t,'yyyy-MM-dd HH:mm:ss');
+    disp(sprintf('\t...analysis starting at: %s',s));  
     if ~config.combine
         disp(sprintf('\t...will analyse sessions into seperate .cut files'));
     elseif config.combine == 1
@@ -435,7 +437,6 @@ function kwiktint(varargin)
     disp('----------------------------------------------------------------------------');
 
 end
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Local subfunction getSNAMES
 function [snames,cname,nsess,fnames] = getSNAMES(get_all)
