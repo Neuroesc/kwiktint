@@ -95,6 +95,8 @@ function kwiktint(varargin)
 % version 3.2.0, Release 06/10/21 minor comments for packaging / git upload
 % version 4.0.0, Release 23/07/25 comments for packaging / git upload
 % version 4.0.1, Release 23/07/25 removed dependence on readSET, swapped for get_axona_headers
+% version 4.1.0, Release 29/11/25 Updates for GitHub release
+% version 4.1.1, Release 29/11/25 datesrt depreciated, replaced with datetime
 %
 % AUTHOR 
 % Roddy Grieves
@@ -379,7 +381,7 @@ function kwiktint(varargin)
             % the .ini file holds the klustakwik option for TINT, it isn't necessary as TINT will default to principal components, but we produce it every time just to be sure
             iname = [out_dir '\kwiktint\TINT_input_' name_now '_' num2str(tnow) '.ini'];
             fileID = fopen(iname,'w');
-            if config.combine % if we are combining files, use the output name 'merge', else, just use the original filename (default)
+            if config.combine % if we are combining files, use the output name kk_fname, else, just use the original filename (default)
                 fprintf(fileID,'%s\n','[Main]',kk_fname,kk_params,'[IncludeChannels]',kk_channels,'[ClusteringFeatures]',kk_features,'[Reporting]',kk_reports);
             else
                 fprintf(fileID,'%s\n','[Main]',kk_params,'[IncludeChannels]',kk_channels,'[ClusteringFeatures]',kk_features,'[Reporting]',kk_reports);

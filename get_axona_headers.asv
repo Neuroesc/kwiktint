@@ -44,6 +44,7 @@ function [h,d] = get_axona_headers(fname)
 % version 2.0.1, Release 19/10/21 removed need for comparison lists, function is fully automatic
 % version 3.0.0, Release 23/07/25 renamed get_axona_headers to avoid conflicts
 % version 3.1.0, Release 23/07/25 changed h to table format
+% version 3.1.1, Release 29/11/25 Updates for GitHub releae
 %
 % AUTHOR 
 % Roddy Grieves
@@ -67,10 +68,12 @@ function [h,d] = get_axona_headers(fname)
             d = ind;
             break
         else
+            row_now = table(cell(1,1),cell(1,1),'VariableNames', {'header','value'}); % empty table row
+
             % break the line into the header name, which is the first string (i.e. 'trial_date')
             % and the second part which is the header info (i.e. 'Tuesday, 18 Oct 2021')
             [t,r] = strtok(line);
-            h.header(ind) = { t };
+            row_now.header(1) = { t };
             
             % We test if the header info is completely numeric, if it is we convert to a double float
             % if not we will test if it is a number followed by a space and some units (i.e. '50 Hz')
@@ -79,13 +82,16 @@ function [h,d] = get_axona_headers(fname)
             if isnan( str2double(r) ) % if the header info contains characters
                 c = strsplit(r,' '); % split the info into parts based on whitespaces (i.e. '50 Hz' becomes '50' and 'Hz')
                 if isnan( str2double(c{1}) ) % if the info still contains text it can't simply be units, so keep it as a string
-                    h.value(ind) = { r };
+                    row_now.value(1) = { r };
                 else % if we are just left with numbers it is likely there was just a units string on the end, so convert to double
-                    h.value(ind) = { str2double(c{1}) };
+                    row_now.value(1) = { str2double(c{1}) };
                 end
             else % if the header info is all numbers
-                h.value(ind) = { str2double(r) };
+                row_now.value(1) = { str2double(r) };
             end
+
+            % accumulate
+            h = [h; row_now];
 
             % get next line
             line = fgets(fid);  

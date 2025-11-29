@@ -44,6 +44,8 @@ function [h,d] = get_axona_headers(fname)
 % version 2.0.1, Release 19/10/21 removed need for comparison lists, function is fully automatic
 % version 3.0.0, Release 23/07/25 renamed get_axona_headers to avoid conflicts
 % version 3.1.0, Release 23/07/25 changed h to table format
+% version 3.1.1, Release 29/11/25 Updates for GitHub release, h now accumulates table rows
+% version 3.1.2, Release 29/11/25 datesrt depreciated, replaced with datetime
 %
 % AUTHOR 
 % Roddy Grieves
