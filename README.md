@@ -20,9 +20,11 @@ process files with default settings:
 kwiktint()
 ```
 
-'Screening mode'  - If Matlab is in a directory containing only one session (1 .set file) and no inputs are given this function will automatically analyse that session and look for all tetrodes. Output files are named 'kwiktint'.
-'Experiment mode' - If multiple .set files are present the function will ask the user to identify which sessions to analyse. It will then assume these sessions should be kkwiked together and that all tetrodes should be analysed. Output files are named 'kwiktint'.
-'Batch mode'      - If you wish to kkwik multiple sessions, but keep the outputs seperate and in different .cut files then run the function with the 'combine' input set to 0. The function will continue to ask which sessions should be analysed, but these will be kkwiked seperately. Output files are named after each original session name, to avoid overwriting anything
+'Screening mode'  - If Matlab is in a directory containing only one session (1 .set file) and no inputs are given this function will automatically analyse that session and look for all tetrodes. Output files are named 'kwiktint'.  
+
+'Experiment mode' - If multiple .set files are present the function will ask the user to identify which sessions to analyse. It will then assume these sessions should be kkwiked together and that all tetrodes should be analysed. Output files are named 'kwiktint'.  
+
+'Batch mode'      - If you wish to kkwik multiple sessions, but keep the outputs seperate and in different .cut files then run the function with the 'combine' input set to 0. The function will continue to ask which sessions should be analysed, but these will be kkwiked seperately. Output files are named after each original session name, to avoid overwriting anything  
 
 process with Name-Value pairs used to control aspects of the cluster cutting:
 ```
