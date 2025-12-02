@@ -52,10 +52,12 @@ function kwiktint(varargin)
 % 'max_tp'           -   (default = 3) Scalar specifying how many tetrodes can be analysed simultaneously or how many instances of TINT can be open simultaneously, includes ones opened by the user.
 %                      This means if you open a copy of TINT manually to do some manual cluster cutting etc klustakwik will only run max_tp-1 copies of TINT.
 %
+% 'skip_grounded'    -   (default = true) Logical or scalar, set to true kwiktint will exclude grounded channels from spike sorting.
+%
 % NOTES
 % 1. for questions about Tint: http://www.axona.com/contact-us
 %
-% 2. 
+% 2. info on klustakwik: https://doi.org/10.1162/NECO_a_00661
 %
 % EXAMPLE
 %
@@ -114,7 +116,7 @@ function kwiktint(varargin)
     addOptional(p,'assume_all_set',true,@(x) numel(x)>~1 & (isnumeric(x)|islogical(x)) );  
     addOptional(p,'backup_cuts',true,@(x) numel(x)>~1 & (isnumeric(x)|islogical(x)) );  
     addOptional(p,'max_tp',2,@(x) isnumeric(x) ); 
-    addOptional(p,'skip_grounded',false,@(x) numel(x)>~1 & (isnumeric(x)|islogical(x)) );  
+    addOptional(p,'skip_grounded',true,@(x) numel(x)>~1 & (isnumeric(x)|islogical(x)) );  
     parse(p,varargin{:});
     config = p.Results;
 
