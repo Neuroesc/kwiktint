@@ -11,11 +11,8 @@ This Matlab function prepares command line instructions and files necessary to a
 > For this function to work, you must have a version of Tint with added command line options (v.4.4.18 and up).
 
 To install the 64-bit version of Tint, with increased cluster limit and command line interface:
-1. Download and run the [Tint installer](http://www.axona.com/TintSetup.exe) to do a preliminary installation
-2. Run Tint at least once
-3. Download the new .exe [here](http://www.axona.com/Tint_x64.zip)
-4. Unzip the .exe and replace the version that was installed at step 1 in the Axona\Tint folder with this new one.
-5. To use beyond the trial limit, contact sales@axona.com to get a license key.
+1. Download and run the [Tint installer](http://www.axona.com/TintSetup.exe)
+2. To use beyond the trial limit, contact sales@axona.com to get a license key.
 
 > [!NOTE]
 > This function will create unique .cut files that must be loaded in Tint to see the cluster cutting results.
@@ -29,6 +26,7 @@ Once the function has been run a .cut file will be saved alongside the data, mor
 6. You should now have spike sorted data
 7. When finished sorting, click 'save centers'
 8. Click yes to overwrite
+9. The kwiktint .cut files can be loaded for later analysis in place of regular .cut files.
 
 # Usage
 process files with default settings:
