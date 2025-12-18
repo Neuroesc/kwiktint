@@ -1,3 +1,5 @@
+<img width="303" height="102" alt="neuroesc_long" src="https://github.com/user-attachments/assets/e185a933-e27d-4436-ab1f-52a4fe389e38" />
+
 # kwiktint
 Kwiktint automated cluster cutting with [Klustakwik 3.0](https://sourceforge.net/projects/klustakwik/) via Tint ([Axona](http://www.axona.com)) in Matlab.
 
